@@ -65,15 +65,19 @@ const CocktailSearchPage = () => {
         className="w-full p-2 mb-4 border border-gray-300 rounded"
       />
 
-      <div className="flex">
-        <CocktailList
-          handleFavoriteToggle={handleFavoriteToggle}
-          favorites={favorites}
-          isLoading={isLoading}
-          cocktails={cocktails}
-        />
+      <div className="flex flex-col md:flex-row">
+        <div className="md:w-2/3 md:mr-4 mb-4 md:mb-0">
+          <CocktailList
+            handleFavoriteToggle={handleFavoriteToggle}
+            favorites={favorites}
+            isLoading={isLoading}
+            cocktails={cocktails}
+          />
+        </div>
 
-        <FavoritesList favorites={favorites} setFavorites={setFavorites} />
+        <div className="md:w-1/3">
+          <FavoritesList favorites={favorites} setFavorites={setFavorites} />
+        </div>
       </div>
     </div>
   );
