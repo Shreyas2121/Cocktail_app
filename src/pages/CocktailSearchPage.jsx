@@ -5,9 +5,7 @@ import FavoritesList from "../components/FavoritesList";
 const CocktailSearchPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [cocktails, setCocktails] = useState([]);
-  const [favorites, setFavorites] = useState(
-    JSON.parse(localStorage.getItem("favorites"))
-  );
+  const [favorites, setFavorites] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -28,6 +26,13 @@ const CocktailSearchPage = () => {
 
     fetchCocktails();
   }, [searchTerm]);
+
+  useEffect(() => {
+    const storedFavorites = JSON.parse(localStorage.getItem("favorites"));
+    if (storedFavorites) {
+      setFavorites(storedFavorites);
+    }
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
